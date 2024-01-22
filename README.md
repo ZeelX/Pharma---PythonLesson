@@ -1,7 +1,18 @@
 # PythonLesson
+
+
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  
+
 Repo used for share code and review with el professor
 
-Find each exercie in dedicated folder.
+Find each exercises in dedicated folder.
 
-python version : 3.12.1
+## Fabriqué avec
+
+Python 3.12.1
+
+## Auteur
+
+**Zeel** 
 
