@@ -12,7 +12,10 @@ Find each exercises in dedicated folder.
 
 ## Made with
 
-Python 3.12.1
+**Python 3.12.1**
+
+* Turtle
+* Pandas
 
 ## Autor
 
