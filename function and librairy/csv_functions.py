@@ -7,7 +7,7 @@ def add_function(number1, number2):
 
 number_calculated = 25
 
-result_list = [add_function(number_calculated, x) for x in range(50, 125, 3)]
+result_list = [add_function(number_calculated, x) for x in range(0,75, 3)]
 data = pd.DataFrame({'Result': result_list})
 
 print(data)
