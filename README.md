@@ -10,11 +10,11 @@ Check on dev branch to see stuffs.
 
 Find each exercises in dedicated folder.
 
-## Fabriqué avec
+## Made with
 
 Python 3.12.1
 
-## Auteur
+## Autor
 
 **Zeel** 
 
