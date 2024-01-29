@@ -4,16 +4,14 @@ import pandas as pd
 from datetime import datetime
 import sqlite3
 
-
-# Extraire de l'information
+# Data extract
 data_url = urlopen('https://www.laboitedufromager.com/liste-des-fromages-par-ordre-alphabetique/')
 data_read = data_url.read()
-
-
 
 soup = BeautifulSoup(data_read, features="html.parser")
 cheese_table = soup.find('table')
 tds = soup.find_all('td')
+a_list = cheese_table.find_all('a')
 
 tds_list = []
 flag_names = []
@@ -30,11 +28,10 @@ for i in range(9, len(tds_list), 3):
         continue
     else:
         flag_names.append(tds_list[i])
-        flag_family.append(tds_list[i+1])
-        flag_dough.append(tds_list[i+2])
+        flag_family.append(tds_list[i + 1])
+        flag_dough.append(tds_list[i + 2])
 
-
-data = {'names':flag_names, 'family':flag_family, 'dough':flag_dough}
+data = {'names': flag_names, 'family': flag_family, 'dough': flag_dough}
 data = pd.DataFrame(data)
 data['creation_date'] = datetime.now()
 con = sqlite3.connect("DATA/cheese.sqlite")
@@ -42,11 +39,9 @@ data.to_sql("ODS", con, if_exists="replace")
 
 con.close()
 
-
 con = sqlite3.connect("DATA/cheese.sqlite")
 
 # Load the data into a DataFrame
 data = pd.read_sql_query("SELECT names,family,dough from ODS", con)
 
 con.close()
-
