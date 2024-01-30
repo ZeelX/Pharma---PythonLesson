@@ -1,8 +1,5 @@
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
-import pandas as pd
-from datetime import datetime
-import sqlite3
+
 
 class ConnexionETL:
 
@@ -22,5 +19,3 @@ class ConnexionETL:
         data = urlopen(self.url)
         self.data = data.read()
         return self.data
-
-

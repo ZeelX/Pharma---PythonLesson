@@ -9,7 +9,7 @@ class Cheese:
     Entity of Cheese for bdd
     """
 
-    def __init__(self, name, family, dough, price, img, description, date):
+    def __init__(self, name, family, dough, price, img, description):
         """
         Initialise une instance de la classe CheeseETL.
 
@@ -22,29 +22,27 @@ class Cheese:
         self.price = price
         self.img = img
         self.description = description
-        self.date = datetime.now()
+        self.date = [datetime.now()]
 
         
-    def load(self, database_name, table_name):
+    def load(self):
         """
         Charge les données dans une table SQLite spécifiée.
 
-        Parameters:
-        - database_name (str): Le nom de la base de données SQLite.
-        - table_name (str): Le nom de la table dans laquelle charger les données.
         """
+
         data = pd.DataFrame({
             'cheese_name': self.name,
             'cheese_family': self.family,
             'cheese_dough': self.dough,
             'cheese_price': self.price,
             'cheese_img': self.img,
-            'cheese_description': self.description
+            'cheese_description': self.description,
+            'date': self.date
         })
-        con = sqlite3.connect(database_name)
-        data.to_sql(table_name, con, if_exists="replace", index=False)
+        con = sqlite3.connect('DATA/cheese.sqlite')
+        data.to_sql('cheese_table', con, if_exists="replace", index=False)
         con.close()
-        return self.data
 
     def read_from_database(self, database_name, table_name):
         """
