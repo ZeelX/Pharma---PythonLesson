@@ -24,10 +24,10 @@ class Cheese:
         self.description = description
         self.date = [datetime.now()]
 
-        
+
     def load(self):
         """
-        Charge les données dans une table SQLite spécifiée.
+        search data on cheese_table
 
         """
 
@@ -41,21 +41,7 @@ class Cheese:
             'date': self.date
         })
         con = sqlite3.connect('DATA/cheese.sqlite')
-        data.to_sql('cheese_table', con, if_exists="replace", index=False)
+        data.to_sql('cheese_table', con, if_exists="append", index=False)
         con.close()
 
-    def read_from_database(self, database_name, table_name):
-        """
-        Lit les données à partir d'une table SQLite spécifiée.
 
-        Parameters:
-        - database_name (str): Le nom de la base de données SQLite.
-        - table_name (str): Le nom de la table à lire.
-
-        Returns:
-        - pd.DataFrame: Un DataFrame contenant les données de la table.
-        """
-        con = sqlite3.connect(database_name)
-        data_from_db = pd.read_sql_query(f"SELECT * from {table_name}", con)
-        con.close()
-        return data_from_db
